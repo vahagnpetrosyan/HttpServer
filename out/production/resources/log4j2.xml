@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Properties>
+    <Property name="log-path">/home/vahag/log/http</Property>
+  </Properties>
+  <Appenders>
+    <Console name="Console-Appender" target="SYSTEM_OUT">
+      <PatternLayout>
+        <pattern>
+          %highlight{[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{10} %M %L - %msg%n}
+        </pattern>>
+      </PatternLayout>
+    </Console>
+    <File name="App-File-Appender" fileName="${log-path}/httpServer.log">
+      <PatternLayout>
+        <pattern>
+          [%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{10} %M %L - %msg%n
+        </pattern>
+      </PatternLayout>
+    </File>
+  </Appenders>
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="App-File-Appender"/>
+      <AppenderRef ref="Console-Appender"/>
+    </Root>
+    <Logger name="com.http" level="debug">
+      <AppenderRef ref="App-File-Appender"/>
+      <AppenderRef ref="Console-Appender"/>
+    </Logger>
+  </Loggers>
+</Configuration>
